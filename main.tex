@@ -1,0 +1,331 @@
+\documentclass[12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+% \usepackage{booktabs}
+%\graphicspath{ {images/} }
+%\usepackage{mathtools}
+\everymath{\displaystyle}
+\parskip=10pt
+\oddsidemargin=1cm
+
+\usepackage{titlesec}
+\titleformat{\section}
+{\bfseries\Large}
+{\thesection.}{0.5em}{}
+
+\DeclareMathOperator{\rank}{rank}
+\makeatletter
+\newenvironment{sqcases}{%
+  \matrix@check\sqcases\env@sqcases
+}{%
+  \endarray\right.%
+}
+\def\env@sqcases{%
+  \let\@ifnextchar\new@ifnextchar
+  \left\lbrack
+  \def\arraystretch{1.2}%
+  \array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+
+\DeclareMathOperator{\arch}{arch}
+\DeclareMathOperator{\sign}{sign}
+
+\begin{document}
+
+
+
+
+Движение иона в электрическом и магнитном поле описывается уравнением:
+
+
+\begin{gather}
+m\frac{d^{2}\vec {\mathbf R}}{dT^{2}}=\frac{e}{c}[\vec{\mathbf {W}} \times \vec{\mathbf {B}}] + e {\vec {\mathbf {E}}}
+\end{gather}
+
+$m$ – масса иона, $\vec {\mathbf R}$ – координата иона, T – время, e – заряд иона, c – скорость света, $\vec{\mathbf {W}}$ – скорость, ${\vec {\mathbf {B}}}$ – магнитное поле, $ {\vec{\mathbf {E}}} $ – электрическое поле.
+
+Положим электрическое поле $ {\vec{\mathbf {E}} =0} $ и перейдём к безразмерным переменным. Пусть L – толщина тонкого токового слоя, $\rho_0 =  \frac{W_0}{\omega_0}$ – радиус ларморовского вращения частицы в магнитном поле, $\omega_0 = \frac{eB_0}{mc}$ – частота ларморовского вращения вдали от слоя. Введём $\lambda_0 = \sqrt{L \rho_0}$ – характерный масштаб движения частиц, $\delta = \sqrt{ \frac{L} {\rho_0}}$ в нашей задаче полагается равным 1.  $W_0$ – модуль скорости частицы, $B_0 = \sqrt{B^2_{x0}+{B^2_{y0}+B^2_n}}$, $t_0 =  \frac{\lambda_0}{W_0}$ – характерное время движения частицы внутри слоя. Учтём, что $\frac{d\vec {\mathbf R}}{dT}=\vec {\mathbf W}$.
+
+
+Введём безразмерные переменные $\vec {\mathbf r} = \frac{\vec {\mathbf R}}{\lambda_0}$, $\vec {\mathbf V} = \frac{\vec {\mathbf W}}{W_0}$, $t =  \frac{T}{t_0}$, $\vec {\mathbf b} = \frac{\vec {\mathbf B}}{B_0}$,
+
+$b_{x0} =  \frac{B_{x0}}{B_0}$, $b_{y0} =  \frac{B_{y0}}{B_0}$, $b_n =  \frac{B_n}{B_0}$.\\[0.5cm]
+
+
+После обезразмеривания получим уравнения для поля с постоянной компонентой:
+
+
+\begin{gather}
+\vec{\mathbf {b}} = 
+\begin{cases}
+b_{x0} \th {\frac{z}{\delta} } \vec {\mathbf {e}}_x \\
+b_{y0}\\
+b_n \vec {\mathbf {e}}_z,
+\end{cases}
+\end{gather} 
+
+
+уравнения для поля с колоколообразной компонентой:
+\begin{gather}
+\vec{\mathbf {b}} = 
+\begin{cases}
+b_{x0} \th {\frac{z}{\delta} } \vec {\mathbf {e}}_x \\
+\begin{sqcases}
+b_{y0} \cos { \frac{z \pi}{\delta 2}} \vec {\mathbf {e}}_y, & \text{если $|z|<\delta$.} \\
+0, & \text{если } |z| \geqslant \delta.
+\end{sqcases} \\
+b_n \vec {\mathbf {e}}_z,
+\end{cases}
+\end{gather}
+
+уравнения для поля с антисимметричной компонентой:
+\begin{gather}
+\vec{\mathbf {b}} = 
+\begin{cases}
+b_{x0} \th {\frac{z}{\delta} } \vec {\mathbf {e}}_x \\
+\begin{sqcases}
+-b_{y0} \sin { \frac{z \pi}{\delta}} \vec {\mathbf {e}}_y, & \text{если $|z|<\delta$.} \\
+0, & \text{если } |z| \geqslant \delta.
+\end{sqcases} \\
+b_n \vec {\mathbf {e}}_z.
+\end{cases}
+\end{gather}
+
+
+
+Пусть $(x,\ y,\ z,\ V_{x},\ V_{y},\ V_{z}) = \vec{\mathbf {a}}$. Уравнения движения принимают вид:
+\begin{gather}
+\vec{\mathbf {f}}(\vec{\mathbf {a}}) = 
+\begin{cases}
+\frac{dx}{dt} = V_x, & \text{(а)} \\[2ex]
+\frac{dy}{dt} = V_y, & \text{(б)} \\[2ex]
+\frac{dz}{dt} = V_z, & \text{(в)} \\[2ex]
+\frac{dV_x}{dt} = \delta (b_nV_y-b_yV_z), & \text{(г)} \\[2ex]
+\frac{dV_y}{dt} = \delta (b_xV_z-b_nV_x), & \text{(д)} \\[2ex]
+\frac{dV_x}{dt} = \delta (b_yV_x-b_xV_y). & \text{(e)} \\[2ex]
+\end{cases}
+\label{System}
+\end{gather}
+
+Введём безразмерный гамильтониан движения частицы: $H = \frac{\tilde H}{\frac{mW^2_0}{2}}$. \\
+Потребуем выполнения закона сохранения энергии: 
+\begin{gather}
+H = V^2_x + V^2_y + V^2_z \equiv 1. 
+\label{5}
+\end{gather}
+Компоненты магнитного поля токового слоя $b_x, b_y, b_z$ не зависят от компоненты $y$ и связаны условием бездивергентности: 
+
+\begin{gather}
+\frac{\partial {b_x}}{\partial x} = \frac{\partial {b_y}}{\partial y} = \frac{\partial {b_z}}{\partial z}
+\end{gather}
+
+$y$-компонента безразмерного вектор-потенциала имеет вид: \begin{equation}
+a_y = \int\limits_0^x b_n\,dx' - \int\limits_0^z b_x\,dz'.
+\end{equation}
+
+
+Обратимся к уравнению (\ref{System}.д) и проинтегрируем его по $t$: 
+
+\begin{equation}
+V_y = C_y - \delta(a_y) = C_y + \delta \left( \int\limits_0^z b_x\,dz' - \int\limits_0^x b_n\,dx' \right),\ C_y = const.
+\end{equation}
+
+\begin{gather*}
+-a_y = \int\limits_0^z b_x\,dz' - \int\limits_0^x b_n\,dx' = \int\limits_0^z b_{x0} \th {\frac{z'}{\delta} } \,dz' - \int\limits_0^x b_n\,dx' = \\
+= -b_nx + \delta b_{x0}\int\limits_0^z \th {\frac{z'}{\delta} }\,d \frac{z'}{\delta} = -b_nx + \delta b_{x0} \ln{ \ch {\frac{z}{\delta} }}.
+\end{gather*}
+
+\begin{equation}
+V_y = C_y - \delta b_n x + \delta^2 b_{x0} \ln{ \ch {\frac{z}{\delta} }}.
+\end{equation}
+
+Начальная скорость при этом:
+
+\begin{equation}
+V_{y0} = C_y - \delta b_n x_0 + \delta^2 b_{x0} \ln{ \ch {\frac{z_0}{\delta} }}.
+\end{equation}
+
+и константа интегрирования равна:
+
+\begin{equation}
+C_y = V_{y0} + \delta b_n x_0 - \delta^2 b_{x0} \ln{ \ch {\frac{z_0}{\delta} }}.
+\label{Cy}
+\end{equation}
+
+Перепишем гамильтониан:
+
+\begin{gather}
+1 = V^2_x + (C_y - \delta b_n x + \delta^2 b_{x0} \ln{ \ch {\frac{z}{\delta} }})^2 + V^2_z \equiv 1. 
+\end{gather}
+
+Учитывая, что гамильтониан не зависит от $y$, выполним сдвиг координат (в силу того, что все магнитные линии имеют одинаковую конфигурацию, смещаем систему к магнитной линии, которая попадает в точку $(x,\ z) = (0,\ 0)$): 
+
+\begin{equation}
+C_y - \delta b_n x_0 = - \delta b_n x'_0.
+\end{equation}
+
+\begin{equation}
+\rightarrow x = x' + \frac{C_y}{b_n \delta},\ x' = x - \frac{C_y}{b_n \delta},\ x'_0 = x_0 - \frac{C_y}{b_n \delta}.
+\label{xshift}
+\end{equation}
+\\
+Для трассирования частиц действуем следующим образом:
+\begin{enumerate}  
+\item Задаём начальные условия $(x_0,\ y_0,\ z_0,\ V_{x0},\ V_{y0},\ V_{z0})$.
+\item Вычисляем $C_y$ по формуле (\ref{Cy}). 
+\item Замена $x_0 \rightarrow x'_0$ по формуле (\ref{xshift}).
+\end{enumerate}
+
+
+
+Далее, для удобства, вернёмся к обозначениям $x' \rightarrow x$.
+
+Скорость по оси $y$ после сдвига примет вид:
+
+\begin{gather}
+V_y = - \delta b_n x + \delta^2 b_{x0} \ln{ \ch {\frac{z}{\delta} }}.\\
+V_{y0} = - \delta b_n x_0 + \delta^2 b_{x0} \ln{ \ch {\frac{z_0}{\delta} }}.
+\end{gather}
+
+И, окончательно, гамильтониан приобретает вид:
+\begin{gather}
+1 = V^2_x + (- \delta b_n x + \delta^2 b_{x0} \ln{ \ch {\frac{z}{\delta} }})^2 + V^2_z. 
+\label{Hamiltonian}
+\end{gather}
+
+\subsection{Сечения Пуанкаре}
+
+Для исследования фазового пространства системы применяется метод сечений Пуанкаре. 
+
+При $z=0$ гамильтониан приобретает вид 
+\begin{gather}
+1 = V^2_x + (- \delta b_n x)^2 + V^2_z. 
+\label{HamiltonianPoincare}
+\end{gather}
+
+В момент пересечения частицей нейтральной плоскости $z=0$ на окружность в осях $V_x,\ \delta b_n x$ наносится точка.
+
+Трассирование частиц выполнялось с примененем метода Рунге-Кутта 4 порядка с адаптивным шагом для системы (\ref{System}) и начальных условий $(x_0,$ $y_0,$ $z_0,$ $V_{x0},$ $V_{y0},$ $V_{z0}) = \vec{\mathbf {a}}_0$.
+
+$\vec{\mathbf {a'}} = \vec{\mathbf {f}}(t, \vec{\mathbf {a}}) \equiv \vec{\mathbf {f}}(\vec{\mathbf {a}})$ в нашей задаче, $\vec{\mathbf {a}}(t_0)=\vec{\mathbf {a}}_0$.
+
+
+\begin{gather*}
+\vec{\mathbf {k}}_1 = \vec{\mathbf {f}}(\vec{\mathbf {a}}_{n}), \\
+\vec{\mathbf {k}}_2 = \vec{\mathbf {f}}(\vec{\mathbf {a}}_{n} + \frac{dt}{2}\vec{\mathbf {k}}_1), \\
+\vec{\mathbf {k}}_3 = \vec{\mathbf {f}}(\vec{\mathbf {a}}_{n} + \frac{dt}{2}\vec{\mathbf {k}}_2), \\
+\vec{\mathbf {k}}_4 = \vec{\mathbf {f}}(\vec{\mathbf {a}}_{n} + dt\vec{\mathbf {k}}_2), \\
+\vec{\mathbf {a}}_{n+1} = \vec{\mathbf {a}}_{n} + \frac{dt}{6}(\vec{\mathbf {k}}_1 + 2\vec{\mathbf {k}}_2 + 2\vec{\mathbf {k}}_3 + \vec{\mathbf {k}}_4).
+\end{gather*}
+
+
+Шаг $dt$ был выбран равным 0.01.
+
+Если на текущем шаге алгоритма требуемая точность сохранения энергии $ \Delta(V^2_x + V^2_y + V^2_z)<\varepsilon=10^{-7}$ не достигалась, шаг по времени делился пополам.
+
+В численных экспериментах энергия сохранялась до 7 знаков после запятой.
+
+Для получения сечений Пуанкаре запускаем ансамбль из 2808 частиц из равномерной сетки в единичном круге в осях $V_x,\ \delta b_n x$. 
+
+В соответствии с алгоритмом, описанным во введении, требуется задать все шесть начальных координат: $(x_0,\ y_0,\ z_0,\ V_{x0},\ V_{y0},\ V_{z0})$.
+
+Поскольку гамильтониан не зависит от $y$, мы $y_0$ можем положить любым и равным 0. $z_0$ также полагается равным 0. Полагаем $\delta b_n x_0 \in (-1;\ 1)$. Требуем $x'_0 = x_0$, тогда $C_y=0$ и $V_{y0} = - \delta b_n x_0$. $V_{x0} \in ( - \sqrt{1 - (\delta b_n x_0)^2 } ;\ \sqrt{1 - (\delta b_n x_0)^2 })$. $V_{z0} = \sqrt{1 - V^2_{x0} - V^2_{y0}}$.
+
+В конце разделяются точки, полученные при пересечении частицами нейтральной плоскости при движении с севера на юг и с юга на север, и наносятся на отдельные графики. 
+
+Сечения Пуанкаре строились для 5 значений $b_{y0}$: 0.0$b_{x0}$ (бесшировый случай), 0.25$b_{x0}$, 0.50$b_{x0}$, 0.75$b_{x0}$, 1.0$b_{x0}$.
+
+Сечения строились для системы с постоянной, колоколообразной и антисимметричной $b_y$ компонентой. При фиксированном значении $b_{y0}$ константа $b_n$ принимала значения 0.10$b_{x0}$, 0.20$b_{x0}$.
+
+\subsection{Инварианты}
+
+Для исследования динамики частиц применяется следующий аналитический подход, основанный на различии временных масштабов изменения переменных ($\delta b_n x$, $V_x$) и $(z, V_z)$.
+В условиях малости величины $\delta b_n x$ в гамильтониане (\ref{Hamiltonian}) можно считать, что переменные $(\delta b_n x, \ V_x)$ – медленные, а переменные $(z, V_z)$ – быстрые. Тогда периодичность движения частицы на плоскости быстрых переменных $(z,\ V_z)$ при фиксированных медленных переменных $x$, $V_x$ позволяет ввести переменную действия как ограниченную замкнутой траекторией площадь: 
+
+\begin{equation}
+I_z = \oint p_z\,dz = \oint V_z\,dz.
+\end{equation}
+
+Инвариант рассчитывается по определению, это площадь под графиком $p_z,\ z$ в течение одного оборота на плоскости быстрых переменных.
+
+Трассирование частиц проводилось методом Рунге-Кутта 4 порядка с адаптивным шагом.
+
+Для расчёта скачков квазиадиабатических инвариантов запуск частиц проводился следующим образом. Начальная координата $z_0$ полагалась равной по модулю 5, знак соответствует запуску с севера или с юга. Поскольку компоненты силовой магнитной линии зависят только от $z$ компоненты, начальные $x_0, y_0$ можем положить любыми, например, нулевыми. При заданной начальной высоте $z_0$ вычисляем компоненты магнитного поля $\vec{\mathbf {b}} = (b_x, b_y, b_z)$ и запускаем частицы с различными питч-углами и фазами в этой точке. Питч-угол – это угол между направлением вектора скорости частицы и вектора магнитного поля. Питч-угол выбирается так, чтобы в начальный момент времени частица летела к нейтральной плоскости.
+
+Зная четыре угла: питч-угол $\theta$,  фазу вращения $\phi$, угол $\alpha$ между направлением силовой линии в начальной точке и нейтральной плоскостью и угол $\gamma$ между проекцией направления силовой линии в начальной точке на нейтральную плоскость и осью $0x$, мы можем записать компоненты начальной скорости частицы:
+
+
+\begin{gather}
+\begin{cases}
+V_{x0} = \cos{\gamma}(- \sin{\theta}\sin{\alpha}\cos{\phi} + \cos{\theta}\cos{\alpha} ) - \sin{\gamma}(\sin{\theta}\sin{\phi}), \\
+V_{y0} = \sin{\gamma}(- \sin{\theta}\sin{\alpha}\cos{\phi} + \cos{\theta}\cos{\alpha} ) + \cos{\gamma}(\sin{\theta}\sin{\phi}), \\
+V_{z0} = \cos{\theta}\sin{\alpha} + \sin{\theta}\cos{\alpha}\cos{\phi}.\\
+\end{cases}
+\end{gather}
+
+
+\begin{gather}
+\alpha=
+\begin{cases}
+\frac{\pi}{2}, & \text{если } b_x = 0, b_y = 0,\\
+\arctg{\frac{b_z}{\sqrt{b^2_x + b^2_y}}}, & \text{иначе.}
+\end{cases}
+\end{gather}
+
+
+\begin{gather}
+\gamma=
+\begin{cases}
+\frac{\pi}{2}\sign(b_y), & \text{если } b_x = 0,\\
+\arctg{\frac{b_y}{b_x}}, & \text{если } b_x > 0,\\
+\pi + \arctg{\frac{b_y}{b_x}}, & \text{если } b_x <0. \\
+\end{cases}
+\end{gather}
+
+
+Поскольку частица запускается вдали от нейтральной плоскости, до её достижения инвариант движения приближённо сохраняется, и на этом этапе вычисляется его среднее значение. После первого пересечения нейтральной плоскости алгоритм находит или момент выхода частицы из серпантинного режима, или же, если частица осталась замагниченной, границей второго временного интервала полагается некоторое время, за которое успевает установиться новое значение инварианта, и на этом втором интервале также рассчитывается среднее значение инварианта. Затем для каждой частицы рассчитывается скачок инварианта, нормируется на начальное значение инварианта, усредняется по ансамблю частиц и строятся графики зависимости $<I_z>$ от $\kappa = \delta b_n$, $<I^2_z>$ от $\kappa$ и $\ln{<I^2_z>}$ от $\ln{\kappa}$.
+
+10 значений фаз вращения $\phi$ распределены равномерно от 0 до $2\pi$, 10 значений питч-угла $\theta$ распределены равномерно от 0.318 до 1.381. 
+
+Скачки инварианта исследовались при 5 значениях $b_{y0}$: 0.0$b_{x0}$ (бесшировый случай), 0.25$b_{x0}$, 0.50$b_{x0}$, 0.75$b_{x0}$, 1.0$b_{x0}$.
+
+В системе с постоянной, колоколообразной и антисимметричной $b_y$ компонентой константа $b_n$ принималась равной 0.02$b_{x0}$, 0.06$b_{x0}$, 0.10$b_{x0}$, 0.20$b_{x0}$. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
